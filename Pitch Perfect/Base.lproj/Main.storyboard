@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kUB-1C-UUb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Record Sounds View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8W-tC-uP4">
-                                <rect key="frame" x="147.5" y="293.5" width="80" height="80"/>
+                                <rect key="frame" x="127.5" y="273.5" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="GNS-pu-tg3"/>
-                                    <constraint firstAttribute="width" constant="80" id="gsu-Fj-vqh"/>
+                                    <constraint firstAttribute="height" constant="120" id="GNS-pu-tg3"/>
+                                    <constraint firstAttribute="width" constant="120" id="gsu-Fj-vqh"/>
                                 </constraints>
                                 <state key="normal" image="RecordButton"/>
                                 <connections>
@@ -33,20 +33,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-MP-kk6">
-                                <rect key="frame" x="134" y="381.5" width="107" height="21"/>
+                                <rect key="frame" x="134" y="401.5" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSN-bl-sjL">
-                                <rect key="frame" x="147.5" y="410.5" width="80" height="80"/>
+                                <rect key="frame" x="157.5" y="430.5" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="idU-g6-eoh"/>
-                                    <constraint firstAttribute="height" constant="80" id="uSZ-2k-Ud4"/>
+                                    <constraint firstAttribute="width" constant="60" id="idU-g6-eoh"/>
+                                    <constraint firstAttribute="height" constant="60" id="uSZ-2k-Ud4"/>
                                 </constraints>
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aPL-gj-qnx"/>
+                                    <segue destination="fWo-b9-lXg" kind="show" id="ev3-Hj-ga9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -60,6 +61,7 @@
                             <constraint firstItem="B8W-tC-uP4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gzA-dH-oX3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Jin-Ng-VLX"/>
                     <connections>
                         <outlet property="recordButton" destination="B8W-tC-uP4" id="d6V-Wx-v6r"/>
                         <outlet property="recordingLabel" destination="FZj-MP-kk6" id="QGv-gu-PQ4"/>
@@ -68,7 +70,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135" y="136.26760563380282"/>
+            <point key="canvasLocation" x="1072.8" y="135.38230884557723"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="stE-6a-3Ox">
+            <objects>
+                <viewController id="fWo-b9-lXg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PpI-ll-8bp"/>
+                        <viewControllerLayoutGuide type="bottom" id="7zt-yw-fLX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S9k-uw-MPZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.2274509804" green="0.81568627449999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSx-Gz-avS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1865" y="132"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Y5-rJ-agm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kUB-1C-UUb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v4h-Uc-OrZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Y2I-BN-gp4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRy-2D-4gZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="135.38230884557723"/>
         </scene>
     </scenes>
     <resources>
