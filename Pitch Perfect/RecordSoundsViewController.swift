@@ -29,11 +29,6 @@ class RecordSoundsViewController: UIViewController {
         // Do any additional setup after loading the view, t    ypically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func stopRecording(_ sender: Any) {
         recordingLabel.text = "Tap to record"
         toggleRecordState(isRecording: false)

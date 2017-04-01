@@ -9,10 +9,10 @@
 import Foundation
 import AVFoundation
 
-class RecordSoundsController {
+class RecordSoundsController:NSObject,AVAudioRecorderDelegate {
+    var audioRecorder:AVAudioRecorder?
     
-    public static func recordSound(){
-        var audioRecorder:AVAudioRecorder
+    public func recordSound(){
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let recordName = "recordedVoice.wav"
         let pathArray = [dirPath,recordName]
@@ -21,9 +21,20 @@ class RecordSoundsController {
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
-        audioRecorder.isMeteringEnabled = true
-        audioRecorder.prepareToRecord()
-        audioRecorder.record()
+        audioRecorder!.delegate = self
+        audioRecorder!.isMeteringEnabled = true
+        audioRecorder!.prepareToRecord()
+        audioRecorder!.record()
+    }
+    
+    public func stopRecording() {
+        audioRecorder!.stop()
+        let audioSession = AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        
     }
 
 
