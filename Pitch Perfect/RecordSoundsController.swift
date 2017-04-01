@@ -40,7 +40,7 @@ class RecordSoundsController:NSObject,AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if onRecordFinishListener != nil {
-            onRecordFinishListener?.onRecordFinish()
+            onRecordFinishListener?.onRecordFinish(isRecordSuccessful:flag,url:audioRecorder!.url)
         }
     }
     

@@ -45,8 +45,12 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
         recordButton.isEnabled = !isRecording
     }
     
-    func onRecordFinish() {
-        print("onRecordFinish called...")
+    func onRecordFinish(isRecordSuccessful:Bool,url:URL) {
+        if(isRecordSuccessful){
+            performSegue(withIdentifier:"stopRecordingSegue", sender: url)
+        }else{
+            print("onRecordFinish Failed...")
+        }
     }
 }
 

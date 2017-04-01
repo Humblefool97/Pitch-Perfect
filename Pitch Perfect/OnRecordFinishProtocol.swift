@@ -9,5 +9,5 @@
 import Foundation
 
 protocol  OnRecordFinishProtocol {
-    func onRecordFinish()
+    func onRecordFinish(isRecordSuccessful:Bool,url:URL)
 }
