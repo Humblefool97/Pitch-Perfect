@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBAction func recordAudioButton(_ sender: Any) {
         recordingLabel.text = "Recording in progress"
+        toggleRecordState(isRecording: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func stopRecording(_ sender: Any) {
+        recordingLabel.text = "Tap to record"
+        toggleRecordState(isRecording: false)
     }
 
     private func toggleRecordState(isRecording:Bool){
