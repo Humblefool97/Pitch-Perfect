@@ -9,10 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var recordingLabel: UILabel!
+    
+    @IBAction func recordAudioButton(_ sender: Any) {
+        recordingLabel.text = "Recording in progress"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, t    ypically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
