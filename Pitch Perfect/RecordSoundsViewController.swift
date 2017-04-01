@@ -15,7 +15,7 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
     @IBOutlet weak var recordingLabel: UILabel!
     
     @IBAction func recordAudioButton(_ sender: Any) {
-        recordingLabel.text = "Recording in progress"
+        recordingLabel.text = Utils.TEXT_RECORDING_IN_PROGRESS
         toggleRecordState(isRecording: true)
         if recordSoundController != nil{
             recordSoundController?.recordSound()
@@ -32,7 +32,7 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
     }
 
     @IBAction func stopRecording(_ sender: Any) {
-        recordingLabel.text = "Tap to record"
+        recordingLabel.text = Utils.TEXT_TAP_TO_RECORD
         toggleRecordState(isRecording: false)
         if recordSoundController != nil{
             recordSoundController?.stopRecording()
@@ -47,9 +47,17 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
     
     func onRecordFinish(isRecordSuccessful:Bool,url:URL) {
         if(isRecordSuccessful){
-            performSegue(withIdentifier:"stopRecordingSegue", sender: url)
+            performSegue(withIdentifier:Utils.SEGUE_CONTROLLER_PLAY_SOUND, sender: url)
         }else{
             print("onRecordFinish Failed...")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Utils.SEGUE_CONTROLLER_PLAY_SOUND {
+            let playSoundVc = segue.destination as! PlaySoundsViewController
+            let url = sender as! URL
+            playSoundVc.recordedAudioURL = url
         }
     }
 }
