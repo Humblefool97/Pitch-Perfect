@@ -9,11 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var stopRecordingBUtton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
     
     @IBOutlet weak var recordingLabel: UILabel!
     
     @IBAction func recordAudioButton(_ sender: Any) {
         recordingLabel.text = "Recording in progress"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 
     override func viewDidLoad() {
