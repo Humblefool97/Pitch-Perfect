@@ -36,5 +36,9 @@ class ViewController: UIViewController {
     @IBAction func stopRecording(_ sender: Any) {
     }
 
+    private func toggleRecordState(isRecording:Bool){
+        stopRecordingBUtton.isEnabled = isRecording
+        recordButton.isEnabled = !isRecording
+    }
 }
 
