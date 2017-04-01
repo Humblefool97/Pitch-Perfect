@@ -10,7 +10,12 @@ import Foundation
 import AVFoundation
 
 class RecordSoundsController:NSObject,AVAudioRecorderDelegate {
-    var audioRecorder:AVAudioRecorder?
+    private var audioRecorder:AVAudioRecorder?
+    private var onRecordFinishListener:OnRecordFinishProtocol?
+    
+    init(onRecordFinishListener:OnRecordFinishProtocol) {
+        self.onRecordFinishListener = onRecordFinishListener
+    }
     
     public func recordSound(){
         let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -34,8 +39,9 @@ class RecordSoundsController:NSObject,AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        
+        if onRecordFinishListener != nil {
+            onRecordFinishListener?.onRecordFinish()
+        }
     }
-
-
+    
 }

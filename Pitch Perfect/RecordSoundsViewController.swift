@@ -8,35 +8,45 @@
 
 import UIKit
 
-class RecordSoundsViewController: UIViewController {
+class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
+    private var recordSoundController:RecordSoundsController?
     @IBOutlet weak var stopRecordingBUtton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
-    
     @IBOutlet weak var recordingLabel: UILabel!
     
     @IBAction func recordAudioButton(_ sender: Any) {
         recordingLabel.text = "Recording in progress"
         toggleRecordState(isRecording: true)
+        if recordSoundController != nil{
+            recordSoundController?.recordSound()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         stopRecordingBUtton.isEnabled = false
-        
+        recordSoundController = RecordSoundsController(onRecordFinishListener: self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, t    ypically from a nib.
     }
 
     @IBAction func stopRecording(_ sender: Any) {
         recordingLabel.text = "Tap to record"
         toggleRecordState(isRecording: false)
+        if recordSoundController != nil{
+            recordSoundController?.stopRecording()
+        }
+
     }
 
     private func toggleRecordState(isRecording:Bool){
         stopRecordingBUtton.isEnabled = isRecording
         recordButton.isEnabled = !isRecording
+    }
+    
+    func onRecordFinish() {
+        print("onRecordFinish called...")
     }
 }
 
