@@ -49,7 +49,7 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
         if(isRecordSuccessful){
             performSegue(withIdentifier:Utils.SEGUE_CONTROLLER_PLAY_SOUND, sender: url)
         }else{
-            print("onRecordFinish Failed...")
+            showAlert("Recording Failed!", message:"Oops!!.It's not you.It's us.Please try again")
         }
     }
     
@@ -59,6 +59,12 @@ class RecordSoundsViewController: UIViewController,OnRecordFinishProtocol {
             let url = sender as! URL
             playSoundVc.recordedAudioURL = url
         }
+    }
+    
+    func showAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
