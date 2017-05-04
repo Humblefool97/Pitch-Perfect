@@ -151,6 +151,12 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
             setPlayButtonsEnabled(true)
             stopButton.isEnabled = false
         }
+        setContentMode(snailButton)
+        setContentMode(rabbitButton)
+        setContentMode(chipmunkButton)
+        setContentMode(vaderButton)
+        setContentMode(reverbButton)
+        setContentMode(echoButton)
     }
     
     func setPlayButtonsEnabled(_ enabled: Bool) {
@@ -166,5 +172,9 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setContentMode(_ button:UIButton){
+        button.imageView?.contentMode = .scaleAspectFit
     }
 }
